@@ -10,7 +10,7 @@ function App() {
       <h1 className="titulo">Bienvenidos al contador de clicks</h1>
     </div>
       <div className="botones">
-      <button className="modificar" onClick={() => setCount((count) => count - 1)}>
+      <button className="modificar" onClick={() => setCount((count) => count > 0 ? count - 1 : 0)}>
           -
         </button>
         <button className="clicks" >
