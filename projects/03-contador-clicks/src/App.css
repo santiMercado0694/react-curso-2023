@@ -4,4 +4,37 @@
   padding: 2rem;
   text-align: center;
 }
+.titulo {
+  text-align: center;
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 3.2em;
+  line-height: 1.1;
+}
 
+.botones button {
+  margin: 10px; /* Puedes ajustar el valor según el espacio que desees entre los elementos */
+}
+
+.clicks{
+  background-color: #c91212;
+  font-size: 4em;
+  width: 500px; /* Ancho fijo para los botones */
+  height: 200px; /* Alto fijo para los botones */
+}
+
+.reiniciar{
+  background-color: #2312bb;
+  font-size: 4em;
+  width: 500px; /* Ancho fijo para los botones */
+  height: 200px; /* Alto fijo para los botones */
+}
+
+.modificar{
+  background-color: #c3ca0b;
+  font-size: 4em;
+  width: 200px; /* Ancho fijo para los botones */
+  height: 200px; /* Alto fijo para los botones */
+}

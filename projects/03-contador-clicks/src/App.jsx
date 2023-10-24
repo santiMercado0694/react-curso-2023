@@ -6,10 +6,23 @@ function App() {
 
   return (
     <>
+    <div>
       <h1 className="titulo">Bienvenidos al contador de clicks</h1>
-      <div>
-        <button onClick={() => setCount((count) => count + 1)}>
-          cantidad de clicks {count}
+    </div>
+      <div className="botones">
+      <button className="modificar" onClick={() => setCount((count) => count - 1)}>
+          -
+        </button>
+        <button className="clicks" >
+          CLICKS {count}
+        </button>
+        <button className="modificar" onClick={() => setCount((count) => count + 1)}>
+          +
+        </button>
+      </div>
+      <div className="botones">
+        <button className="reiniciar" onClick={() => setCount((count) => count - count)}>
+          REINICIAR
         </button>
       </div>
     </>
