@@ -30,40 +30,6 @@ const WINNER_COMBOS = [
   [2, 4, 6]
 ]
 
-const checkWinnerFrom = (boardToCheck) => {
-  // revisamos todas las combinaciones ganadoras
-  // para ver si X u O ganó
-  for (const combo of WINNER_COMBOS) {
-    const [a, b, c] = combo
-    if (
-      boardToCheck[a] &&
-      boardToCheck[a] === boardToCheck[b] &&
-      boardToCheck[a] === boardToCheck[c]
-    ) {
-      return boardToCheck[a]
-    }
-  }
-  // si no hay ganador
-  return null
-}
-
-const checkWinner = (boardToCheck) => {
-  // revisamos todas las combinaciones ganadoras
-  // para ver si X u O ganó
-  for (const combo of WINNER_COMBOS) {
-    const [a, b, c] = combo
-    if (
-      boardToCheck[a] &&
-      boardToCheck[a] === boardToCheck[b] &&
-      boardToCheck[a] === boardToCheck[c]
-    ) {
-      return boardToCheck[a]
-    }
-  }
-  // si no hay ganador
-  return null
-}
-
 function App() {
   const [board, setBoard] = useState(
     Array(9).fill(null)
@@ -71,6 +37,29 @@ function App() {
   const [turn, setTurn] = useState(TURNS.X)
   // null es que no hay ganador , false es que hay un empate
   const [winner, setWinner] = useState(null) 
+
+  const checkWinner = (boardToCheck) => {
+    // revisamos todas las combinaciones ganadoras
+    // para ver si X u O ganó
+    for (const combo of WINNER_COMBOS) {
+      const [a, b, c] = combo
+      if (
+        boardToCheck[a] &&
+        boardToCheck[a] === boardToCheck[b] &&
+        boardToCheck[a] === boardToCheck[c]
+      ) {
+        return boardToCheck[a]
+      }
+    }
+    // si no hay ganador
+    return null
+  }
+
+  const resetGame = () => {
+    setBoard(Array(9).fill(null))
+    setTurn(TURNS.X)
+    setWinner(null)
+  }  
 
   const updateBoard = (index) => {
     // no actualizamos esta posicion
@@ -93,6 +82,7 @@ function App() {
   return(
     <main className='board'>
       <h1>Tic tac toe</h1>
+      <button onClick={resetGame}>Reset del juego</button>
       <section className="game">
         {
           board.map((_, index) => {
@@ -117,6 +107,31 @@ function App() {
           {TURNS.O}
         </Square>
       </section>
+      
+      {
+        winner != null && (
+          <section className="winner">
+            <div className="text">
+              <h2>
+                {
+                  winner === false
+                    ? 'Empate'
+                    : 'Gano:'
+                }
+              </h2>
+
+              <header className="win">
+                {winner && <Square>{winner}</Square>}
+              </header>
+
+              <footer>
+                <button onClick={resetGame}>Empezar de nuevo</button>
+              </footer>
+            </div>
+          </section>
+        )
+      }  
+
     </main>
   )
 }
